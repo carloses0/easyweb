@@ -1,0 +1,64 @@
+<div class="container-fluid justify-content-center">
+
+
+  <div class="row">
+    <div class="col-12">
+      <mat-toolbar class="jumbotron">Cadastro Cliente</mat-toolbar>
+      <br>
+      <mat-divider></mat-divider>
+      <form [formGroup]="formulario">
+        <div class="container-fluid">
+          <div class="row">
+            <mat-card class="container-fluid">
+              <mat-card-header>
+                <mat-card-title>
+                  Dados Pessoais
+                </mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <div class="row" style="margin-left: 5%">
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Cpf/Cpnj</mat-label>
+                    <input matInput formControlName="cpfCpnj">
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Nome/Razão Social</mat-label>
+                    <input matInput formControlName="nome">
+                  </mat-form-field>
+                </div>
+              </div>
+              <mat-card-header>
+                <mat-card-title>
+                  Endereço
+                </mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <form [formGroup]="formulario.endereco">
+
+                <div class="row" style="margin-left: 5%">
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Rua</mat-label>
+                      <input matInput formControlName="logradouro">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Número</mat-label>
+                      <input matInput formControlName="numero">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </form>
+
+            </mat-card>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
