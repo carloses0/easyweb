@@ -1,0 +1,23 @@
+
+.mat-icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 30px;
+  width: 24px;
+  margin-right: 10%;
+  margin-left: -11%;
+}
+
+.button-refresh {
+  color: #3f51b5;
+  .mat-icon {
+    color: #3f51b5;
+  }
+}
+
+.mat-card .mat-divider-horizontal {
+  position: relative;
+  left: 0;
+  width: 27%;
+}

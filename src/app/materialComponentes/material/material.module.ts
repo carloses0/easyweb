@@ -5,6 +5,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatInputModule, MatLabel} from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 
@@ -13,7 +16,9 @@ const materialComponentes = [
   MatToolbarModule,
   MatDividerModule,
   MatInputModule,
-  MatCardModule
+  MatCardModule,
+  MatIconModule,
+  MatButtonModule
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import { MenuLeftComponent } from './pages/menu-left/menu-left.component';
 import { ClienteFormComponent } from './pages/cliente/cliente-form/cliente-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}

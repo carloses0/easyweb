@@ -6,7 +6,7 @@
       <mat-toolbar class="jumbotron">Cadastro Cliente</mat-toolbar>
       <br>
       <mat-divider></mat-divider>
-      <form [formGroup]="formulario">
+      <form [formGroup]="formularioCliente">
         <div class="container-fluid">
           <div class="row">
             <mat-card class="container-fluid">
@@ -20,13 +20,21 @@
                 <div class="col-2">
                   <mat-form-field appearance="legacy">
                     <mat-label>Cpf/Cpnj</mat-label>
-                    <input matInput formControlName="cpfCpnj">
+                    <input matInput type="text" formControlName="cpfCnpj">
+                    <button mat-button *ngIf="formularioCliente.controls['cpfCnpj'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioCliente.controls['cpfCnpj'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
                   </mat-form-field>
                 </div>
                 <div class="col-2">
                   <mat-form-field appearance="legacy">
                     <mat-label>Nome/Razão Social</mat-label>
                     <input matInput formControlName="nome">
+                    <button mat-button *ngIf="formularioCliente.controls['nome'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioCliente.controls['nome'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
                   </mat-form-field>
                 </div>
               </div>
@@ -36,24 +44,134 @@
                 </mat-card-title>
               </mat-card-header>
               <mat-divider></mat-divider>
-              <form [formGroup]="formulario.endereco">
-
+              <form [formGroup]="formularioEndereco">
                 <div class="row" style="margin-left: 5%">
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>CEP</mat-label>
+                      <input matInput formControlName="cep">
+                      <button mat-button *ngIf="formularioEndereco.controls['cep'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formularioEndereco.controls['cep'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>Rua</mat-label>
                       <input matInput formControlName="logradouro">
+                      <button mat-button *ngIf="formularioEndereco.controls['logradouro'].value" matSuffix
+                              mat-icon-button aria-label="Clear"
+                              (click)="formularioEndereco.controls['logradouro'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
                     </mat-form-field>
                   </div>
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>Número</mat-label>
                       <input matInput formControlName="numero">
+                      <button mat-button *ngIf="formularioEndereco.controls['numero'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formularioEndereco.controls['numero'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Bairro</mat-label>
+                      <input matInput formControlName="bairro">
+                      <button mat-button *ngIf="formularioEndereco.controls['bairro'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formularioEndereco.controls['bairro'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>UF</mat-label>
+                      <input matInput formControlName="uf">
+                      <button mat-button *ngIf="formularioEndereco.controls['uf'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formularioEndereco.controls['uf'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-4">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Complemento</mat-label>
+                      <textarea matInput formControlName="complemento"></textarea>
+                      <button mat-button *ngIf="formularioEndereco.controls['complemento'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formularioEndereco.controls['complemento'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
                     </mat-form-field>
                   </div>
                 </div>
               </form>
+              <mat-card-header>
+                <mat-card-title>
+                  Contato
+                </mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <form [formGroup]="formularioContato">
+                <div class="row" style="margin-left: 5%">
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Email</mat-label>
+                      <input matInput type="email" formControlName="email">
+                      <button mat-button *ngIf="formularioContato.controls['email'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formularioContato.controls['email'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
 
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Telefone</mat-label>
+                      <input matInput type="text" formControlName="telefone">
+                      <button mat-button *ngIf="formularioContato.controls['telefone'].value" matSuffix
+                              mat-icon-button aria-label="Clear"
+                              (click)="formularioContato.controls['telefone'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Celular</mat-label>
+                      <input matInput type="text" formControlName="celular">
+                      <button mat-button *ngIf="formularioContato.controls['celular'].value" matSuffix
+                              mat-icon-button aria-label="Clear"
+                              (click)="formularioContato.controls['celular'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-12">
+                  <div class="col-1 float-right">
+                    <button type="button" mat-raised-button (click)="salvar()" color="primary">
+                      <mat-icon>check_circle_outline</mat-icon>
+                      Salvar
+                    </button>
+                  </div>
+                  <div class="col-1 float-right">
+                    <button type="button" class="button-refresh"  mat-raised-button>
+                      <mat-icon>refresh_circle_outline</mat-icon>
+                      Limpar
+                    </button>
+                  </div>
+                </div>
+              </div>
             </mat-card>
           </div>
         </div>

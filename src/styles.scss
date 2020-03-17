@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-import
+
+.mat-icon {
+   background-repeat: no-repeat;
+   display: inline-block;
+   fill: currentColor;
+   height: 30px;
+   width: 24px;
+   margin-right: 10%;
+   margin-left: -11%;
+ }
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
