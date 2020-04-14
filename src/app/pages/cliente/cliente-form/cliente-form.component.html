@@ -1,9 +1,7 @@
 <div class="container-fluid justify-content-center">
-
-
   <div class="row">
     <div class="col-12">
-      <mat-toolbar class="jumbotron">Cadastro Cliente</mat-toolbar>
+      <mat-toolbar class="toolbar-custom">Cadastro de Cliente</mat-toolbar>
       <br>
       <mat-divider></mat-divider>
       <form [formGroup]="formularioCliente">
@@ -20,7 +18,10 @@
                 <div class="col-2">
                   <mat-form-field appearance="legacy">
                     <mat-label>Cpf/Cpnj</mat-label>
-                    <input matInput type="text" formControlName="cpfCnpj">
+                    <input matInput type="text" formControlName="cpfCnpj" required>
+                    <mat-error
+                      *ngIf="formularioCliente.controls['cpfCnpj'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                    </mat-error>
                     <button mat-button *ngIf="formularioCliente.controls['cpfCnpj'].value" matSuffix mat-icon-button
                             aria-label="Clear" (click)="formularioCliente.controls['cpfCnpj'].reset()">
                       <mat-icon>close</mat-icon>
@@ -30,13 +31,24 @@
                 <div class="col-2">
                   <mat-form-field appearance="legacy">
                     <mat-label>Nome/Razão Social</mat-label>
-                    <input matInput formControlName="nome">
+                    <input matInput formControlName="nome" required>
+                    <mat-error
+                      *ngIf="formularioCliente.controls['nome'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                    </mat-error>
                     <button mat-button *ngIf="formularioCliente.controls['nome'].value" matSuffix mat-icon-button
                             aria-label="Clear" (click)="formularioCliente.controls['nome'].reset()">
                       <mat-icon>close</mat-icon>
                     </button>
                   </mat-form-field>
                 </div>
+                <div class="col-8">
+                  <button class="float-right" [disabled]="!habilitarVeiculos" type="button" mat-raised-button (click)="goVeiculos()"
+                          color="primary">
+                    <mat-icon>playlist_add</mat-icon>
+                    Veiculos
+                  </button>
+                </div>
+
               </div>
               <mat-card-header>
                 <mat-card-title>
@@ -49,7 +61,10 @@
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>CEP</mat-label>
-                      <input matInput formControlName="cep">
+                      <input matInput formControlName="cep" required>
+                      <mat-error
+                        *ngIf="formularioEndereco.controls['cep'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
                       <button mat-button *ngIf="formularioEndereco.controls['cep'].value" matSuffix mat-icon-button
                               aria-label="Clear" (click)="formularioEndereco.controls['cep'].reset()">
                         <mat-icon>close</mat-icon>
@@ -60,7 +75,10 @@
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>Rua</mat-label>
-                      <input matInput formControlName="logradouro">
+                      <input matInput formControlName="logradouro" required>
+                      <mat-error
+                        *ngIf="formularioEndereco.controls['logradouro'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
                       <button mat-button *ngIf="formularioEndereco.controls['logradouro'].value" matSuffix
                               mat-icon-button aria-label="Clear"
                               (click)="formularioEndereco.controls['logradouro'].reset()">
@@ -71,7 +89,10 @@
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>Número</mat-label>
-                      <input matInput formControlName="numero">
+                      <input matInput formControlName="numero" required>
+                      <mat-error
+                        *ngIf="formularioEndereco.controls['numero'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
                       <button mat-button *ngIf="formularioEndereco.controls['numero'].value" matSuffix mat-icon-button
                               aria-label="Clear" (click)="formularioEndereco.controls['numero'].reset()">
                         <mat-icon>close</mat-icon>
@@ -82,7 +103,10 @@
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>Bairro</mat-label>
-                      <input matInput formControlName="bairro">
+                      <input matInput formControlName="bairro" required>
+                      <mat-error
+                        *ngIf="formularioEndereco.controls['bairro'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
                       <button mat-button *ngIf="formularioEndereco.controls['bairro'].value" matSuffix mat-icon-button
                               aria-label="Clear" (click)="formularioEndereco.controls['bairro'].reset()">
                         <mat-icon>close</mat-icon>
@@ -93,9 +117,26 @@
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>UF</mat-label>
-                      <input matInput formControlName="uf">
+                      <input matInput formControlName="uf" required>
+                      <mat-error
+                        *ngIf="formularioEndereco.controls['uf'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
                       <button mat-button *ngIf="formularioEndereco.controls['uf'].value" matSuffix mat-icon-button
                               aria-label="Clear" (click)="formularioEndereco.controls['uf'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-2">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Cidade</mat-label>
+                      <input matInput formControlName="cidade" required>
+                      <mat-error
+                        *ngIf="formularioEndereco.controls['cidade'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
+                      <button mat-button *ngIf="formularioEndereco.controls['cidade'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formularioEndereco.controls['cidade'].reset()">
                         <mat-icon>close</mat-icon>
                       </button>
                     </mat-form-field>
@@ -105,7 +146,8 @@
                     <mat-form-field appearance="legacy">
                       <mat-label>Complemento</mat-label>
                       <textarea matInput formControlName="complemento"></textarea>
-                      <button mat-button *ngIf="formularioEndereco.controls['complemento'].value" matSuffix mat-icon-button
+                      <button mat-button *ngIf="formularioEndereco.controls['complemento'].value" matSuffix
+                              mat-icon-button
                               aria-label="Clear" (click)="formularioEndereco.controls['complemento'].reset()">
                         <mat-icon>close</mat-icon>
                       </button>
@@ -124,7 +166,10 @@
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>Email</mat-label>
-                      <input matInput type="email" formControlName="email">
+                      <input matInput type="email" formControlName="email" required>
+                      <mat-error
+                        *ngIf="formularioContato.controls['email'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
                       <button mat-button *ngIf="formularioContato.controls['email'].value" matSuffix mat-icon-button
                               aria-label="Clear" (click)="formularioContato.controls['email'].reset()">
                         <mat-icon>close</mat-icon>
@@ -146,7 +191,10 @@
                   <div class="col-2">
                     <mat-form-field appearance="legacy">
                       <mat-label>Celular</mat-label>
-                      <input matInput type="text" formControlName="celular">
+                      <input matInput type="text" formControlName="celular" required>
+                      <mat-error
+                        *ngIf="formularioContato.controls['celular'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
                       <button mat-button *ngIf="formularioContato.controls['celular'].value" matSuffix
                               mat-icon-button aria-label="Clear"
                               (click)="formularioContato.controls['celular'].reset()">
@@ -158,18 +206,28 @@
               </form>
               <div class="row">
                 <div class="col-12">
+
+                  <div class="col-1 float-right">
+                    <button type="button" class="button-refresh" [routerLink]="['/cliente-list']" mat-raised-button>
+                      <mat-icon>keyboard_backspace</mat-icon>
+                      Voltar
+                    </button>
+                  </div>
+
+                  <div class="col-1 float-right">
+                    <button type="button" class="button-refresh" mat-raised-button (click)="clearAll()">
+                      <mat-icon>autorenew</mat-icon>
+                      Limpar
+                    </button>
+                  </div>
+
                   <div class="col-1 float-right">
                     <button type="button" mat-raised-button (click)="salvar()" color="primary">
                       <mat-icon>check_circle_outline</mat-icon>
                       Salvar
                     </button>
                   </div>
-                  <div class="col-1 float-right">
-                    <button type="button" class="button-refresh"  mat-raised-button>
-                      <mat-icon>refresh_circle_outline</mat-icon>
-                      Limpar
-                    </button>
-                  </div>
+
                 </div>
               </div>
             </mat-card>

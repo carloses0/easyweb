@@ -1,13 +1,13 @@
 
 export class ContatoModel {
+  telefone: string;
+  celular: string;
   email: string;
-  telefone: number;
-  celular: number;
 
 
-  constructor(email: string, telefone: number, celular: number) {
-    this.email = email;
+  constructor(telefone: string, celular: string, email: string) {
     this.telefone = telefone;
     this.celular = celular;
+    this.email = email;
   }
 }

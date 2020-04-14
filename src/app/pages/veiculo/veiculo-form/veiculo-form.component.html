@@ -1,0 +1,142 @@
+<div class="container-fluid justify-content-center">
+  <div class="row">
+    <div class="col-12">
+      <mat-toolbar class="toolbar-custom" *ngIf="!id">Cadastro de Cliente</mat-toolbar>
+      <mat-toolbar class="toolbar-custom" *ngIf="id">{{'Veiculos de ' + cliente?.nome}}
+        <mat-form-field appearance="legacy" class="float-right custom-combo">
+          <mat-label>Lista de Veículos</mat-label>
+          <mat-select  (selectionChange)="onChangeVeiculo($event.value)" [(value)]="veiculo">
+            <mat-option *ngFor=" let veic of veiculos" [value]="veic">{{veic?.marca + ' ' + veic?.modelo}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-toolbar>
+      <br>
+      <mat-divider></mat-divider>
+      <form [formGroup]="formularioVeiculo">
+        <div class="container-fluid">
+          <div class="row">
+            <mat-card class="container-fluid">
+              <mat-card-header>
+                <mat-card-title *ngIf="veiculo">Veículo: {{veiculo.marca + ' ' + veiculo.modelo}}</mat-card-title>
+                <mat-card-title *ngIf="!veiculo">Cadastre um novo veículo</mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <br>
+              <div class="row" style="margin-left: 5%">
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Placa</mat-label>
+                    <input matInput type="text" formControlName="placa">
+                    <button mat-button *ngIf="formularioVeiculo.controls['placa'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioVeiculo.controls['placa'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>chassi</mat-label>
+                    <input matInput formControlName="chassi">
+                    <button mat-button *ngIf="formularioVeiculo.controls['chassi'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioVeiculo.controls['chassi'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <br/>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Modelo</mat-label>
+                    <input matInput formControlName="modelo">
+                    <button mat-button *ngIf="formularioVeiculo.controls['modelo'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioVeiculo.controls['modelo'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Marca</mat-label>
+                    <input matInput formControlName="marca">
+                    <button mat-button *ngIf="formularioVeiculo.controls['marca'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioVeiculo.controls['marca'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Cor</mat-label>
+                    <input matInput formControlName="cor">
+                    <button mat-button *ngIf="formularioVeiculo.controls['cor'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioVeiculo.controls['cor'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Ano</mat-label>
+                    <input matInput formControlName="ano">
+                    <button mat-button *ngIf="formularioVeiculo.controls['ano'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioVeiculo.controls['ano'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Quilometragem</mat-label>
+                    <input matInput formControlName="quilometragem">
+                    <button mat-button *ngIf="formularioVeiculo.controls['quilometragem'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioVeiculo.controls['quilometragem'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Motor</mat-label>
+                    <input matInput formControlName="motor">
+                    <button mat-button *ngIf="formularioVeiculo.controls['motor'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formularioVeiculo.controls['motor'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+
+                  <div class="col-1 float-right">
+                    <button type="button" class="button-refresh" (click)="excluirVeiculo(this.veiculo.id)" mat-raised-button>
+                      <mat-icon>delete_foreve</mat-icon>
+                      Excluir
+                    </button>
+                  </div>
+
+                  <div class="col-1 float-right">
+                    <button type="button" class="button-refresh" (click)="veiculo = null; this.formularioVeiculo.reset()" mat-raised-button>
+                      <mat-icon>add</mat-icon>
+                      Novo
+                    </button>
+                  </div>
+
+                  <div class="col-1 float-right">
+                    <button type="button" mat-raised-button
+                            (click)="salvarVeiculo(this.formularioVeiculo.controls['placa'].value)" color="primary">
+                      <mat-icon>check_circle_outline</mat-icon>
+                      Salvar
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

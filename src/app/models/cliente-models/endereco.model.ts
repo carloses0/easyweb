@@ -1,21 +1,21 @@
 
 export class EnderecoModel {
-  uf: string;
-  bairro: string;
-  numero: string;
-  cidade: string;
-  complemento: string;
-  cep: string;
   logradouro: string;
+  bairro: string;
+  cep: string;
+  cidade: string;
+  uf: string;
+  complemento: string;
+  numero: string;
 
 
-  constructor(uf: string, bairro: string, numero: string, cidade: string, complemento: string, cep: string, logradouro: string) {
-    this.uf = uf;
-    this.bairro = bairro;
-    this.numero = numero;
-    this.cidade = cidade;
-    this.complemento = complemento;
-    this.cep = cep;
+  constructor(logradouro: string, bairro: string, cep: string, cidade: string, uf: string, complemento: string, numero: string) {
     this.logradouro = logradouro;
+    this.bairro = bairro;
+    this.cep = cep;
+    this.cidade = cidade;
+    this.uf = uf;
+    this.complemento = complemento;
+    this.numero = numero;
   }
 }

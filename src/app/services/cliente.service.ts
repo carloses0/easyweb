@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, throwError} from "rxjs";
-import {ClienteModel} from "../models/cliente-models/cliente.model";
-import {catchError, retry} from "rxjs/operators";
+import {Observable, throwError} from 'rxjs';
+import {ClienteModel} from '../models/cliente-models/cliente.model';
+import {catchError, retry, take} from 'rxjs/operators';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import {catchError, retry} from "rxjs/operators";
 
 export class ClienteService {
 
-  apiUrl = 'http:localhost:8080';
+  apiUrl = 'http://localhost:8080/clientes';
 
   constructor(private http: HttpClient) {}
 
@@ -21,19 +22,17 @@ export class ClienteService {
     })
   };
 
-  saveCliente(cliente: ClienteModel): Observable<ClienteModel> {
-    return this.http.post<ClienteModel>(this.apiUrl + '/clientes', JSON.stringify(cliente), this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
+  saveCliente(cliente: ClienteModel) {return this.http.post<ClienteModel>(this.apiUrl + '/save', cliente); }
+
+  alterarCliente(cliente: ClienteModel) {return this.http.put<ClienteModel>(this.apiUrl, cliente); }
+
+  getCliente() {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-
-
-
-
-
+  getClienteById(id) {
+    return this.http.get(this.apiUrl + '/' + id).pipe(take(1));
+  }
 
   handleError(error) {
     let errorMessage = '';
@@ -46,5 +45,16 @@ export class ClienteService {
     }
     window.alert(errorMessage);
     return throwError(errorMessage);
+  }
+
+  validateAllFormFields(formGroup: FormGroup): void {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
   }
 }

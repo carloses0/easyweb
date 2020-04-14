@@ -4,23 +4,22 @@
 <!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started
-
-<!-- Toolbar -->
+<!-- * * * * * * * to get started-->
 <div class="toolbar" role="banner">
   <img
     width="40"
     alt="EasyCar Logo"
     src="../assets/img/mecanico-de-desenho-animado-segurando-uma-chave-enorme_61878-756.jpg"/>
   <span>EasyCar</span>
+  <button mat-button [matMenuTriggerFor]="menu">Clientes</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/cliente-list']">Pesquisar</button>
+    <button mat-menu-item [routerLink]="['/cliente-form']">Novo</button>
+  </mat-menu>
 
 </div>
 
-<div class="content" role="main">
-
-  <app-menu-left></app-menu-left>
-
-</div>
+  <!--<app-menu-left></app-menu-left>-->
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->

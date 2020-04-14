@@ -1,19 +1,22 @@
 import {ContatoModel} from './contato.model';
 import {EnderecoModel} from './endereco.model';
+import {VeiculoModel} from "./veiculo.model";
 
 export class ClienteModel {
   id: number;
   nome: string;
   cpfCnpj: string;
-  endereco: EnderecoModel;
+  veiculos: VeiculoModel[];
   contato: ContatoModel;
+  enderecos: EnderecoModel[];
 
 
-  constructor(id: number, nome: string, cpfCnpj: string, endereco: EnderecoModel, contato: ContatoModel) {
+  constructor(id: number, nome: string, cpfCnpj: string, contato: ContatoModel, enderecos: EnderecoModel[], veiculos: VeiculoModel[]) {
     this.id = id;
     this.nome = nome;
     this.cpfCnpj = cpfCnpj;
-    this.endereco = endereco;
+    this.enderecos = enderecos;
     this.contato = contato;
+    this.veiculos = veiculos;
   }
 }

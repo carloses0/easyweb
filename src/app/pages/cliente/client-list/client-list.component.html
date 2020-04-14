@@ -1,0 +1,58 @@
+<mat-card class="mat-expansion-panel">
+
+
+  <div class="container-fluid justify-content-center">
+    <mat-accordion>
+      <mat-expansion-panel expanded hideToggle disabled>
+
+        <mat-expansion-panel-header>
+          <mat-panel-title class="custom-title">
+            Clientes
+          </mat-panel-title>
+          <div class="col-1 float-right">
+            <button class="custom-buttom" type="button" mat-raised-button [routerLink]="['/cliente-form']" color="primary">
+              <mat-icon>add</mat-icon>
+              Novo
+            </button>
+          </div>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-12">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-tabela">
+
+              <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="cpf/cnpj">
+                <th mat-header-cell *matHeaderCellDef> Cpf/Cnpj </th>
+                <td mat-cell *matCellDef="let element"> {{element.cpfCnpj}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="alterar">
+                <th mat-header-cell *matHeaderCellDef> Alterar </th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button color="primary" aria-label="Example icon-button with a dehaze icon" (click)="onEdit(element.id)">
+                    <mat-icon>dehaze</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+          <br/>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+</mat-card>
