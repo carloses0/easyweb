@@ -9,7 +9,8 @@ import {
   MatInputModule,
   MatLabel,
   MatMenuModule,
-  MatOptionModule, MatSelectModule
+  MatListModule,
+  MatOptionModule, MatPaginator, MatSelectModule
 } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 
 
@@ -33,15 +36,18 @@ const materialComponentes = [
   MatMenuModule,
   MatFormFieldModule,
   MatOptionModule,
-  MatSelectModule
+  MatSelectModule,
+  MatPaginatorModule,
+  MatListModule
 ];
 
 @NgModule({
   declarations: [],
   imports: [
     materialComponentes,
+    CurrencyMaskModule
   ],
-  exports: [materialComponentes]
+  exports: [materialComponentes, CurrencyMaskModule]
 })
 export class MaterialModule {
 }

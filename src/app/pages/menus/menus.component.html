@@ -1,0 +1,31 @@
+<div class="toolbar col-xs-6 col-sm-8 col-md-12 col-lg-12" role="columnheader">
+  <img
+    [routerLink]="['/os']"
+    width="40"
+    alt="EasyCar Logo"
+    src="../assets/img/mecanico-de-desenho-animado-segurando-uma-chave-enorme_61878-756.jpg"/>
+  <button  mat-button [matMenuTriggerFor]="menuOS"> <span>EasyCar</span></button>
+
+
+
+  <mat-menu #menuOS="matMenu">
+    <button mat-menu-item [routerLink]="['/cliente-list']">Pesquisar OS</button>
+    <button mat-menu-item [routerLink]="['/cliente-form']">Nova OS</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="menuClientes">Clientes</button>
+  <mat-menu #menuClientes="matMenu">
+    <button mat-menu-item [routerLink]="['/cliente-list']">Pesquisar</button>
+    <button mat-menu-item [routerLink]="['/cliente-form']">Novo</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="menuProdutos" [routerLink]="['/produtos']">Produtos</button>
+  <mat-menu #menuProdutos="matMenu">
+    <button mat-menu-item [routerLink]="['/cliente-list']">Pesquisar</button>
+    <button mat-menu-item [routerLink]="['/cliente-form']">Novo</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="menuServicos" [routerLink]="['/servicos']">Serviços</button>
+  <mat-menu #menuServicos="matMenu">
+    <button mat-menu-item [routerLink]="['/cliente-list']">Pesquisar3</button>
+    <button mat-menu-item [routerLink]="['/cliente-form']">Novo3</button>
+  </mat-menu>
+</div>

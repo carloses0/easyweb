@@ -1,0 +1,31 @@
+.card-os {
+  margin: auto;
+  max-width: 100%;
+  margin-top: 1%;
+
+}
+
+.mat-card{
+
+  border: 3px solid;
+  border-top-right-radius: 2%;
+  border-bottom-left-radius: 2%;
+  border-top-color: #16DB93;
+  border-left-color: #16DB93;
+  border-bottom: none;
+  border-right: none;
+ }
+
+.button-add {
+  color: #3f51b5;
+  .mat-icon {
+    color: #3f51b5;
+  }
+  min-width: 61%;
+}
+
+
+.tittle {
+  font-size: 4vh !important;
+}
+

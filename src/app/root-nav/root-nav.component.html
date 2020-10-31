@@ -1,0 +1,69 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image divider-avatar"></div>
+          <mat-card-title>Carlos</mat-card-title>
+          <mat-card-subtitle>Product Owner</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    <mat-nav-list>
+      <mat-list-item class="parent">
+				<span class="full-width title-menu">O.S</span>
+				<mat-icon mat-list-icon class="size-icon">assignment</mat-icon>
+      </mat-list-item>
+
+      <div class="submenu">
+        <a mat-list-item [routerLink]="['/os']">Gerenciar O.S</a>
+      </div>
+
+      <mat-list-item class="parent">
+				<span class="full-width title-menu">Clientes</span>
+				<mat-icon mat-list-icon class="size-icon">person_pin</mat-icon>
+      </mat-list-item>
+
+      <div class="submenu">
+        <a mat-list-item [routerLink]="['/cliente-list']">Pesquisar Cliente</a>
+        <a mat-list-item [routerLink]="['/cliente-form']">Novo Cliente</a>
+      </div>
+
+      <mat-list-item class="parent">
+				<span class="full-width title-menu"> Serviços </span>
+				<mat-icon mat-list-icon class="size-icon">build</mat-icon>
+      </mat-list-item>
+
+      <div class="submenu">
+        <a mat-list-item [routerLink]="['/servicos-list']">Pesquisar Serviços</a>
+        <a mat-list-item [routerLink]="['/servicos-form']">Novo Serviço</a>
+      </div>
+
+      <mat-list-item class="parent">
+				<span class="full-width title-menu"> Produtos </span>
+				<mat-icon mat-list-icon class="size-icon">shopping_cart</mat-icon>
+      </mat-list-item>
+
+      <div class="submenu">
+        <a mat-list-item [routerLink]="['/produtos']">Produtos</a>
+      </div>
+
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="fonte-titulo">Bem vindo ao Sistema</span>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

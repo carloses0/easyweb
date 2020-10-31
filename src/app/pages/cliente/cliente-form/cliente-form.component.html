@@ -15,7 +15,7 @@
               </mat-card-header>
               <mat-divider></mat-divider>
               <div class="row" style="margin-left: 5%">
-                <div class="col-2">
+                <div class="col-2 float-lg-left">
                   <mat-form-field appearance="legacy">
                     <mat-label>Cpf/Cpnj</mat-label>
                     <input matInput type="text" formControlName="cpfCnpj" required>
@@ -28,7 +28,7 @@
                     </button>
                   </mat-form-field>
                 </div>
-                <div class="col-2">
+                <div class="col-2 float-lg-right">
                   <mat-form-field appearance="legacy">
                     <mat-label>Nome/Razão Social</mat-label>
                     <input matInput formControlName="nome" required>
@@ -205,23 +205,23 @@
                 </div>
               </form>
               <div class="row">
-                <div class="col-12">
+                <div class="col-xs-6 col-sm-8 col-md-12 col-lg-12">
 
-                  <div class="col-1 float-right">
+                  <div class="float-right three-button">
                     <button type="button" class="button-refresh" [routerLink]="['/cliente-list']" mat-raised-button>
                       <mat-icon>keyboard_backspace</mat-icon>
                       Voltar
                     </button>
                   </div>
 
-                  <div class="col-1 float-right">
+                  <div class="float-right three-button">
                     <button type="button" class="button-refresh" mat-raised-button (click)="clearAll()">
                       <mat-icon>autorenew</mat-icon>
                       Limpar
                     </button>
                   </div>
 
-                  <div class="col-1 float-right">
+                  <div class="float-right three-button">
                     <button type="button" mat-raised-button (click)="salvar()" color="primary">
                       <mat-icon>check_circle_outline</mat-icon>
                       Salvar

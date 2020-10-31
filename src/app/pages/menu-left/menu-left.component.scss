@@ -1,14 +1,17 @@
 .sidenav-container {
   background: #fff;
-  min-height: 80%;
+  height: 100%;
+
   mat-sidenav {
     background: #f1f3f1;
+    width: 13%;
+    height: 100%;
 
   }
 
 .box-avatar {
-  width: 300px;
-  height: 100px;
+  display: flex;
+  height: 20%;
   border: 1px solid blue;
   }
 

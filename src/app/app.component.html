@@ -5,30 +5,20 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started-->
-<div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="EasyCar Logo"
-    src="../assets/img/mecanico-de-desenho-animado-segurando-uma-chave-enorme_61878-756.jpg"/>
-  <span>EasyCar</span>
-  <button mat-button [matMenuTriggerFor]="menu">Clientes</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="['/cliente-list']">Pesquisar</button>
-    <button mat-menu-item [routerLink]="['/cliente-form']">Novo</button>
-  </mat-menu>
+<!-- <header>
+   <h1>Header</h1>
+</header>
 
-</div>
+<body>
+  <app-menu-left></app-menu-left>
+</body>
 
-  <!--<app-menu-left></app-menu-left>-->
+<footer>
+  <H1>Rodape</H1>
+</footer>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+ -->
 
-
-
-<router-outlet></router-outlet>
+<app-root-nav>
+  <router-outlet></router-outlet>
+</app-root-nav>

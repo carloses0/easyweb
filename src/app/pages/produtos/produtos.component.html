@@ -1,0 +1,153 @@
+<div class="container-fluid justify-content-center">
+  <div class="row">
+    <div class="col-12">
+      <mat-toolbar class="toolbar-custom col-xs-12 col-sm-12 col-md-6 col-lg-6">Produtos</mat-toolbar>
+
+
+      <br>
+      <mat-divider></mat-divider>
+      <form [formGroup]="formulario">
+        <div class="container-fluid">
+          <div class="row">
+            <mat-card class="container-fluid">
+              <mat-card-header>
+                <mat-card-title >Cadastre um novo produto</mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <br>
+              <div class="row" style="margin-left: 5%">
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Valor</mat-label>
+                    <input matInput type="text" currencyMask formControlName="valor" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+                    <button mat-button *ngIf="formulario.controls['valor'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formulario.controls['valor'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Descrição</mat-label>
+                    <input matInput formControlName="descricao">
+                    <button mat-button *ngIf="formulario.controls['descricao'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formulario.controls['descricao'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <br/>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="nome">
+                    <button mat-button *ngIf="formulario.controls['nome'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formulario.controls['nome'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Alterar</mat-label>
+                    <input matInput formControlName="marca">
+                    <button mat-button *ngIf="formulario.controls['marca'].value" matSuffix mat-icon-button
+                            aria-label="Clear" (click)="formulario.controls['marca'].reset()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-12">
+
+                  <div class="col-1 float-right">
+                    <button type="button" class="button-refresh" (click)="excluirProduto(this.produto.id)" mat-raised-button>
+                      <mat-icon>delete_foreve</mat-icon>
+                      Excluir
+                    </button>
+                  </div>
+
+                  <div class="col-1 float-right">
+                    <button type="button" class="button-refresh" (click)="produto = null;" mat-raised-button>
+                      <mat-icon>add</mat-icon>
+                      Novo
+                    </button>
+                  </div>
+
+                  <div class="col-1 float-right">
+                    <button type="button" mat-raised-button
+                            (click)="salvarProduto()" color="primary">
+                      <mat-icon>check_circle_outline</mat-icon>
+                      Salvar
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </form>
+      <br/>
+      <mat-accordion>
+        <mat-expansion-panel expanded hideToggle disabled>
+
+          <mat-expansion-panel-header>
+            <mat-panel-title class="custom-title">
+              <br/>
+              <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Pesquisar um produto</mat-label>
+                  <textarea matInput  [(ngModel)]="pesquisaNome" placeholder="Ex.: Buxa da balança"></textarea>
+                </mat-form-field>
+              </form>
+            </mat-panel-title>
+            <div class="col-1 float-right">
+              <button class="custom-buttom" type="button" style="right: 20%; top: 50%" mat-raised-button color="primary" (click)="pesquisarPorNome()">
+                <mat-icon>search</mat-icon>
+                Pesquisar
+              </button>
+            </div>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <br/>
+      <div class="row">
+        <div class="col-12">
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-tabela">
+
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="nome">
+              <th mat-header-cell *matHeaderCellDef> Nome </th>
+              <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="valor">
+              <th mat-header-cell *matHeaderCellDef> Valor </th>
+              <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="marca">
+              <th mat-header-cell *matHeaderCellDef> Marca </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" aria-label="Example icon-button with a dehaze icon">
+                  <mat-icon>dehaze</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <br/>
+      </div>
+    </div>
+  </div>
+
+</div>

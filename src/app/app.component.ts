@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
@@ -7,7 +8,12 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'easycar-web';
+  title = 'Sistema de gerenciamento';
+  ambiente: string;
 
+  constructor() {
+    this.ambiente = environment.ambiente;
+  }
 
+  flag = false;
 }

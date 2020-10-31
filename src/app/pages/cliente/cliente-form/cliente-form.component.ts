@@ -13,7 +13,7 @@ import {VeiculoModel} from "../../../models/cliente-models/veiculo.model";
 @Component({
   selector: 'app-cliente-form',
   templateUrl: './cliente-form.component.html',
-  styleUrls: ['./cliente-form.component.scss']
+  styleUrls: ['./cliente-form.component.scss', '../../../app.component.scss']
 })
 export class ClienteFormComponent implements OnInit {
 

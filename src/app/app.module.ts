@@ -2,7 +2,6 @@ import { MaterialModule } from './materialComponentes/material/material.module';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +14,19 @@ import {ToastrModule} from 'ngx-toastr';
 import { ClientListComponent } from './pages/cliente/client-list/client-list.component';
 import { VeiculoFormComponent } from './pages/veiculo/veiculo-form/veiculo-form.component';
 import { OrdemServicoComponent } from './pages/ordem-servico/ordem-servico.component';
+import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { ServicosComponent } from './pages/servicos/servicos-form.component';
+import { MenusComponent } from './pages/menus/menus.component';
+import { RootNavComponent } from './root-nav/root-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { ServicosListComponent } from './pages/servicos/servicos-list/servicos-list/servicos-list.component';
+import { ProdutosListComponent } from './pages/produtos/produtos-list/produtos-list/produtos-list.component';
+import { OsFormComponent } from './pages/ordem-servico/os-form/os-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +35,15 @@ import { OrdemServicoComponent } from './pages/ordem-servico/ordem-servico.compo
     ClienteFormComponent,
     ClientListComponent,
     VeiculoFormComponent,
-    OrdemServicoComponent
+    OrdemServicoComponent,
+    ProdutosComponent,
+    ServicosComponent,
+    MenusComponent,
+    RootNavComponent,
+    ServicosListComponent,
+    ProdutosListComponent,
+    OsFormComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -33,7 +53,13 @@ import { OrdemServicoComponent } from './pages/ordem-servico/ordem-servico.compo
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}

@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
+import { environment } from './../../environments/environment'
+import { Injectable, Injector } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
+import {Observable, throwError, from} from 'rxjs';
 import {ClienteModel} from '../models/cliente-models/cliente.model';
 import {catchError, retry, take} from 'rxjs/operators';
 import {FormControl, FormGroup} from "@angular/forms";
@@ -10,11 +11,14 @@ import {FormControl, FormGroup} from "@angular/forms";
   providedIn: 'root'
 })
 
-export class ClienteService {
 
-  apiUrl = 'http://localhost:8080/clientes';
+export class ClienteService  {
 
-  constructor(private http: HttpClient) {}
+  apiUrl: string = environment.URL_SERVER_API + 'clientes';
+
+  constructor(private http: HttpClient, injector: Injector) {
+
+}
 
   httpOptions = {
     headers: new HttpHeaders({

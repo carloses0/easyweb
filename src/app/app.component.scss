@@ -14,4 +14,52 @@
   background-image: linear-gradient(#c2c3c4, blue, white) !important;
 }
 
+.fonte-titulo {
+ font: 300;
+ font-family: monospace;
+}
 
+
+.custom-tabela {
+  min-width: 100%;
+}
+
+.mat-icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 30px;
+  width: 24px;
+  margin-right: 10%;
+  margin-left: -11%;
+}
+
+.button-refresh {
+  color: #3f51b5;
+  .mat-icon {
+    color: #3f51b5;
+  }
+}
+
+button {
+  outline:0px;
+}
+
+.mat-card .mat-divider-horizontal {
+  position: relative;
+  left: 0;
+  width: 27%;
+}
+
+.toolbar-custom {
+  margin-top: 1%;
+  color: rgba(0,0,0,.87);
+  background: #fff!important;
+  //background-color: #4e5ed1;
+  box-shadow: 7px 11px 5px 0px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.three-button {
+display: flex;
+padding: 1%;
+}
