@@ -35,11 +35,16 @@
                       </button>
                     </mat-form-field>
                   </div>
-  
-                  <div class="col-2 float-lg-right">
+
+                  <div class="col-2 float-lg-right" formGroupName="cliente">
                     <mat-form-field appearance="legacy">
                       <mat-label>Cliente</mat-label>
-                      <input matInput currencyMask  formControlName="cliente" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" required>
+                      <input matInput formControlName="cliente" [matAutocomplete]="autoGroup" required>
+                      <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let cliente of clienteGroup" [value]="cliente">
+                            {{cliente.nome}}
+                          </mat-option>
+                    </mat-autocomplete>
                       <mat-error
                         *ngIf="formulario.controls['cliente'].hasError('required')"> {{ 'Campo obrigatório.'}}
                       </mat-error>
@@ -49,8 +54,8 @@
                       </button>
                     </mat-form-field>
                   </div>
-  
-  
+
+
                   <div class="col-2 float-lg-right">
                     <mat-form-field appearance="legacy">
                       <mat-label>Veiculo</mat-label>
@@ -79,28 +84,28 @@
                 </div>
                 <div class="row">
                   <div class="col-xs-6 col-sm-8 col-md-12 col-lg-12 container">
-  
+
                     <div class="float-right three-button">
                       <button type="button" class="button-refresh" [routerLink]="['/servicos-list']" mat-raised-button>
                         <mat-icon>keyboard_backspace</mat-icon>
                         Voltar
                       </button>
                     </div>
-  
+
                     <div class="float-right three-button" >
                       <button type="button" class="button-refresh" mat-raised-button (click)="clearAll()">
                         <mat-icon>autorenew</mat-icon>
                         Limpar
                       </button>
                     </div>
-  
+
                     <div class="float-right three-button">
                       <button type="button" mat-raised-button (click)="salvar()" color="primary">
                         <mat-icon>check_circle_outline</mat-icon>
                         Salvar
                       </button>
                     </div>
-  
+
                   </div>
                 </div>
               </mat-card>
@@ -109,6 +114,5 @@
         </form>
       </div>
     </div>
-  
+
   </div>
-  

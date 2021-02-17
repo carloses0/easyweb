@@ -18,8 +18,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -38,7 +39,8 @@ const materialComponentes = [
   MatOptionModule,
   MatSelectModule,
   MatPaginatorModule,
-  MatListModule
+  MatListModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

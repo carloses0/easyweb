@@ -13,4 +13,6 @@ export class VeiculoService {
 
 
   alterarVeiculo(veiculo: VeiculoModel) {return this.http.put<VeiculoModel>(this.apiUrl, veiculo); }
+
+  getVeiculos() {return this.http.get<VeiculoModel[]>(this.apiUrl);}
 }

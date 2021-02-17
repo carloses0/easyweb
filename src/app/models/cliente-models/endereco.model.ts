@@ -1,5 +1,6 @@
 
 export class EnderecoModel {
+  id: number;
   logradouro: string;
   bairro: string;
   cep: string;
@@ -9,7 +10,7 @@ export class EnderecoModel {
   numero: string;
 
 
-  constructor(logradouro: string, bairro: string, cep: string, cidade: string, uf: string, complemento: string, numero: string) {
+  constructor(id: number, logradouro: string, bairro: string, cep: string, cidade: string, uf: string, complemento: string, numero: string) {
     this.logradouro = logradouro;
     this.bairro = bairro;
     this.cep = cep;
