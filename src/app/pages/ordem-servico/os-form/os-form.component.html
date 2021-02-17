@@ -1,1 +1,114 @@
-<p>os-form works!</p>
+<div class="container-fluid justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <mat-toolbar class="toolbar-custom">Cadastro de Ordem de Serviço</mat-toolbar>
+        <br>
+        <mat-divider></mat-divider>
+        <form [formGroup]="formulario">
+          <div class="container-fluid">
+            <div class="row">
+              <mat-card class="container-fluid">
+                <div class="row" style="margin-left: 5%">
+                  <div class="col-2 float-lg-left">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Data Ìnicio</mat-label>
+                      <input matInput type="text" formControlName="datainicio" required>
+                      <mat-error
+                        *ngIf="formulario.controls['datainicio'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
+                      <button mat-button *ngIf="formulario.controls['datainicio'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formulario.controls['datainicio'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2 float-lg-right">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Data término</mat-label>
+                      <input matInput formControlName="datafinal" required>
+                      <mat-error
+                        *ngIf="formulario.controls['datafinal'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
+                      <button mat-button *ngIf="formulario.controls['datafinal'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formulario.controls['datafinal'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-2 float-lg-right">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Cliente</mat-label>
+                      <input matInput currencyMask  formControlName="cliente" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" required>
+                      <mat-error
+                        *ngIf="formulario.controls['cliente'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
+                      <button mat-button *ngIf="formulario.controls['cliente'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formulario.controls['cliente'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+  
+  
+                  <div class="col-2 float-lg-right">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Veiculo</mat-label>
+                      <input matInput formControlName="veiculo" required>
+                      <mat-error
+                        *ngIf="formulario.controls['veiculo'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
+                      <button mat-button *ngIf="formulario.controls['veiculo'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formulario.controls['veiculo'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Tipo do Serviço</mat-label>
+                    <mat-select formControlName="tipo" required>
+                      <mat-option value="motor">motor</mat-option>
+                      <mat-option value="revisao">revisão</mat-option>
+                      <mat-option value="suspensao">suspensão</mat-option>
+                      <mat-option value="freio completo"> freio completo</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="formulario.controls['tipo'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-8 col-md-12 col-lg-12 container">
+  
+                    <div class="float-right three-button">
+                      <button type="button" class="button-refresh" [routerLink]="['/servicos-list']" mat-raised-button>
+                        <mat-icon>keyboard_backspace</mat-icon>
+                        Voltar
+                      </button>
+                    </div>
+  
+                    <div class="float-right three-button" >
+                      <button type="button" class="button-refresh" mat-raised-button (click)="clearAll()">
+                        <mat-icon>autorenew</mat-icon>
+                        Limpar
+                      </button>
+                    </div>
+  
+                    <div class="float-right three-button">
+                      <button type="button" mat-raised-button (click)="salvar()" color="primary">
+                        <mat-icon>check_circle_outline</mat-icon>
+                        Salvar
+                      </button>
+                    </div>
+  
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+  

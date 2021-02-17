@@ -7,6 +7,7 @@ import {VeiculoFormComponent} from './pages/veiculo/veiculo-form/veiculo-form.co
 import {OrdemServicoComponent} from './pages/ordem-servico/ordem-servico.component';
 import {ProdutosComponent} from "./pages/produtos/produtos.component";
 import {ServicosComponent} from "./pages/servicos/servicos-form.component";
+import { OsFormComponent } from './pages/ordem-servico/os-form/os-form.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'cliente-form/:id', component: ClienteFormComponent},
   {path: 'veiculo-form/:id', component: VeiculoFormComponent},
   {path: 'os', component: OrdemServicoComponent},
+  {path: 'os-form', component: OsFormComponent},
   {path: 'produtos', component: ProdutosComponent},
   {path: 'servicos-form', component: ServicosComponent},
   {path: 'servicos-form/:id', component: ServicosComponent},
