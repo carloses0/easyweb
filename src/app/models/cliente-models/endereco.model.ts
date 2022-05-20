@@ -11,6 +11,7 @@ export class EnderecoModel {
 
 
   constructor(id: number, logradouro: string, bairro: string, cep: string, cidade: string, uf: string, complemento: string, numero: string) {
+    this.id = id;
     this.logradouro = logradouro;
     this.bairro = bairro;
     this.cep = cep;

@@ -18,7 +18,7 @@
 </footer>
 
  -->
-
-<app-root-nav>
+<app-login *ngIf="loginService.habilitado === false"></app-login>
+<app-root-nav *ngIf="loginService.habilitado">
   <router-outlet></router-outlet>
 </app-root-nav>

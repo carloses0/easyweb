@@ -4,10 +4,11 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
       <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image divider-avatar"></div>
-          <mat-card-title>Carlos</mat-card-title>
-          <mat-card-subtitle>Product Owner</mat-card-subtitle>
+        <mat-card-header style="color: white; background-color: #3f51b5; width: 174px; border-radius: 15px 50px 30px;">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title style="display: flex; justify-content: space-between;">
+            <span style="padding-right: 10%;">EasyCar</span><mat-icon>build</mat-icon>
+          </mat-card-title>
         </mat-card-header>
       </mat-card>
     <mat-nav-list>
@@ -30,6 +31,12 @@
         <a mat-list-item [routerLink]="['/cliente-form']">Novo Cliente</a>
       </div>
 
+      <mat-list-item class="parent" [routerLink]="['/orcamento']">
+				<span class="full-width title-menu" > Orçamento </span>
+				<mat-icon mat-list-icon class="size-icon">description</mat-icon>
+      </mat-list-item>
+
+
       <mat-list-item class="parent">
 				<span class="full-width title-menu"> Serviços </span>
 				<mat-icon mat-list-icon class="size-icon">build</mat-icon>
@@ -40,15 +47,22 @@
         <a mat-list-item [routerLink]="['/servicos-form']">Novo Serviço</a>
       </div>
 
-      <mat-list-item class="parent">
-				<span class="full-width title-menu"> Produtos </span>
+      <mat-list-item class="parent" [routerLink]="['/produtos']">
+				<span class="full-width title-menu" > Produtos </span>
 				<mat-icon mat-list-icon class="size-icon">shopping_cart</mat-icon>
       </mat-list-item>
 
-      <div class="submenu">
-        <a mat-list-item [routerLink]="['/produtos']">Produtos</a>
-      </div>
 
+      <mat-list-item class="parent" [routerLink]="['/tecnico']">
+				<span class="full-width title-menu" > Técnicos </span>
+				<mat-icon mat-list-icon class="size-icon">person_add</mat-icon>
+      </mat-list-item>
+
+
+      <mat-list-item class="parent" [routerLink]="['/dashBoard']">
+				<span class="full-width title-menu"> Últimos Lançamentos </span>
+				<mat-icon mat-list-icon class="size-icon">equalizer</mat-icon>
+      </mat-list-item>
 
     </mat-nav-list>
   </mat-sidenav>

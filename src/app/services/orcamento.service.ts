@@ -6,15 +6,17 @@ import { Observable, throwError, from } from 'rxjs';
 import { ClienteModel } from '../models/cliente-models/cliente.model';
 import { catchError, retry, take } from 'rxjs/operators';
 import { FormControl, FormGroup } from "@angular/forms";
+import { OrcamentoModel } from '../models/orcamento.model';
+import { OrdemServicoModel } from '../models/ordem-servico.model';
 
 @Injectable({
   providedIn: 'root'
 })
  
 
-export class ClienteService {
+export class OrcamentoService {
 
-  apiUrl: string = environment.URL_SERVER_API + 'clientes';
+  apiUrl: string = environment.URL_SERVER_API + 'orcamento';
 
   constructor(private http: HttpClient, injector: Injector) {
 
@@ -26,15 +28,19 @@ export class ClienteService {
     })
   };
 
-  saveCliente(cliente: ClienteModel) { return this.http.post<ClienteModel>(this.apiUrl + '/save', cliente); }
+  listAll() {
+    return this.http.get<OrcamentoModel[]>(this.apiUrl)
+  }
 
-  alterarCliente(cliente: ClienteModel) { return this.http.put<ClienteModel>(this.apiUrl, cliente); }
+  saveOrcamento(orcamento: OrcamentoModel) { return this.http.post<OrcamentoModel>(this.apiUrl + '/save', orcamento); }
 
-  getCliente() {
+  alterar(orcamento: OrcamentoModel) { return this.http.put<OrcamentoModel>(this.apiUrl, orcamento); }
+
+  getOrcamento() {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getClienteById(id) {
+  getOrcamentoById(id) {
     return this.http.get(this.apiUrl + '/' + id).pipe(take(1));
   }
 

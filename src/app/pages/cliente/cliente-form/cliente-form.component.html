@@ -18,7 +18,7 @@
                 <div class="col-2 float-lg-left">
                   <mat-form-field appearance="legacy">
                     <mat-label>Cpf/Cpnj</mat-label>
-                    <input matInput type="text" formControlName="cpfCnpj" required>
+                    <input matInput type="text" formControlName="cpfCnpj" [mask]="getCpfCnpjMask()" required>
                     <mat-error
                       *ngIf="formularioCliente.controls['cpfCnpj'].hasError('required')"> {{ 'Campo obrigatório.'}}
                     </mat-error>

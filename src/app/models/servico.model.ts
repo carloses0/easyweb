@@ -5,6 +5,7 @@ export class ServicoModel {
   descricao: string;
   valor: number;
   duracao: string;
+  qtd: number;
 
 
   constructor(id: number, nome: string, tipo: string, descricao: string, valor: number, duracao: string) {

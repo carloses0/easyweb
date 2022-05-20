@@ -19,10 +19,10 @@ export class ProdutosComponent implements OnInit {
   produto: ProdutoModel;
   listProdutos: ProdutoModel[] = [];
 
-  pesquisaNome: String;
+  pesquisaNome: FormControl = new FormControl("");
 
   dataSource = new MatTableDataSource<ProdutoModel>();
-  displayedColumns: string[] = ['nome', 'valor', 'marca'];
+  displayedColumns: string[] = ['nome', 'valor', 'editar'];
 
   constructor(private router: Router, private routeActivate: ActivatedRoute, private produtoService: ProdutoService, private toastNotification: ToastrService) {
   }
@@ -31,6 +31,7 @@ export class ProdutosComponent implements OnInit {
     this.initForm();
     this.listall();
   }
+
 
 
   initForm() {
@@ -52,21 +53,10 @@ export class ProdutosComponent implements OnInit {
     this.produtoService.saveProduto(this.produto).subscribe(response => {
       if (response) {
         this.toastNotification.success(' Produto foi salvo com sucesso.');
-        this.router.navigate(['/produtos']);
-
+        this.formulario.reset();
+        this.listall();
       }
     }, error => this.toastNotification.error('Falha ao salvar, por favor tente novamente mais tarde.'));
-  }
-
-  buildForSave() {
-    this.produto = new ProdutoModel(
-      null,
-      +this.formulario.controls['valor'].value,
-      this.formulario.controls['descricao'].value,
-      this.formulario.controls['nome'].value,
-      this.formulario.controls['marca'].value,
-      this.formulario.controls['categoria'].value,
-    );
   }
 
   excluirProduto(id: number) {
@@ -74,14 +64,24 @@ export class ProdutosComponent implements OnInit {
   }
 
   listall() {
-    this.produtoService.getProdutos().subscribe( response => {
-        this.dataSource.data = response;
+    this.produtoService.getProdutos().subscribe( res => {
+      let listFiltro = res;
+      listFiltro.forEach( data => {
+        res.forEach( prod => {
+          let index = listFiltro.findIndex(item => item.nome === prod.nome);
+    
+          if(data.nome == prod.nome && data.id != prod.id) {
+            listFiltro.splice(index,1)                            
+          }
+        })
+      });
+      this.dataSource.data = listFiltro;
     });
   };
 
 
   pesquisarPorNome() {
-    this.getProdutoByName(this.pesquisaNome);
+    this.getProdutoByName(this.pesquisaNome.value);
   }
 
   getProdutoByName(name: String){
@@ -92,6 +92,32 @@ export class ProdutosComponent implements OnInit {
           }
         this.dataSource.data = returnList;
       })
+  }
+
+  onEdit(obj: any) {
+
+    this.formulario.patchValue({
+      id: obj.id,
+      valor: obj.valor,
+      descricao: obj.descricao,
+      nome: obj.nome,
+      marca: obj.marca,
+      categoria: obj.categoria
+    });
+
+  }
+
+  
+  
+  buildForSave() {
+    this.produto = new ProdutoModel(
+      null,
+      +this.formulario.controls['valor'].value,
+      this.formulario.controls['descricao'].value,
+      this.formulario.controls['nome'].value,
+      this.formulario.controls['marca'].value,
+      this.formulario.controls['categoria'].value,
+    );
   }
 
 

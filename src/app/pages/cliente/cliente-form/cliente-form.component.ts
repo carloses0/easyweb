@@ -57,6 +57,7 @@ export class ClienteFormComponent implements OnInit {
 
     if (cliente.enderecos.length > 0) {
       this.formularioEndereco.patchValue({
+        id: cliente.enderecos[0].id,
         logradouro: cliente.enderecos[0].logradouro,
         cep: cliente.enderecos[0].cep,
         bairro: cliente.enderecos[0].bairro,
@@ -88,6 +89,7 @@ export class ClienteFormComponent implements OnInit {
     });
 
     this.formularioEndereco = new FormGroup({
+      id: new FormControl(''),
       logradouro: new FormControl(''),
       cep: new FormControl(''),
       bairro: new FormControl(''),
@@ -168,6 +170,7 @@ export class ClienteFormComponent implements OnInit {
     );
 
     let endereco = new EnderecoModel(
+      this.formularioEndereco.controls['id'].value ? this.formularioEndereco.controls['id'].value : null,
       this.formularioEndereco.controls['logradouro'].value,
       this.formularioEndereco.controls['bairro'].value,
       this.formularioEndereco.controls['cep'].value,
@@ -195,5 +198,19 @@ export class ClienteFormComponent implements OnInit {
     this.enderecos = [];
   }
 
+
+
+
+  isCPF(): boolean{
+    const value: string = this.formularioCliente.controls.cpfCnpj.value
+    if(value != null)
+      console.log(value.length)
+    return value == null ? true : value.length < 12 ? true : false;
+   
+  }
+
+ getCpfCnpjMask(): string{
+    return this.isCPF() ? '000.000.000-009' : '00.000.000/0000-00';
+ }
 
 }

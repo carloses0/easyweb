@@ -19,7 +19,7 @@ export class ServicosService {
   alterarServico(servico: ServicoModel) {return this.http.put<ServicoModel>(this.apiUrl + '/update', servico); }
 
   getServicos() {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<ServicoModel[]>(this.apiUrl);
   }
 
   getServicosById(id) {
@@ -28,5 +28,9 @@ export class ServicosService {
 
   getServicosByName(name) {
     return this.http.get(this.apiUrl + '/findByName/' + name).pipe(take(1));
+  }
+
+  excluir(id:number) {
+    return this.http.delete(this.apiUrl + '/' + id).pipe(take(1));
   }
 }

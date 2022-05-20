@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-2">
                   <mat-form-field appearance="legacy">
-                    <mat-label>Alterar</mat-label>
+                    <mat-label>Marca</mat-label>
                     <input matInput formControlName="marca">
                     <button mat-button *ngIf="formulario.controls['marca'].value" matSuffix mat-icon-button
                             aria-label="Clear" (click)="formulario.controls['marca'].reset()">
@@ -91,28 +91,7 @@
         </div>
       </form>
       <br/>
-      <mat-accordion>
-        <mat-expansion-panel expanded hideToggle disabled>
 
-          <mat-expansion-panel-header>
-            <mat-panel-title class="custom-title">
-              <br/>
-              <form class="example-form">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Pesquisar um produto</mat-label>
-                  <textarea matInput  [(ngModel)]="pesquisaNome" placeholder="Ex.: Buxa da balança"></textarea>
-                </mat-form-field>
-              </form>
-            </mat-panel-title>
-            <div class="col-1 float-right">
-              <button class="custom-buttom" type="button" style="right: 20%; top: 50%" mat-raised-button color="primary" (click)="pesquisarPorNome()">
-                <mat-icon>search</mat-icon>
-                Pesquisar
-              </button>
-            </div>
-          </mat-expansion-panel-header>
-        </mat-expansion-panel>
-      </mat-accordion>
       <br/>
       <div class="row">
         <div class="col-12">
@@ -129,13 +108,13 @@
             <!-- Name Column -->
             <ng-container matColumnDef="valor">
               <th mat-header-cell *matHeaderCellDef> Valor </th>
-              <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="marca">
-              <th mat-header-cell *matHeaderCellDef> Marca </th>
+            <ng-container matColumnDef="editar">
+              <th mat-header-cell *matHeaderCellDef> Editar </th>
               <td mat-cell *matCellDef="let element">
-                <button mat-icon-button color="primary" aria-label="Example icon-button with a dehaze icon">
+                <button mat-icon-button color="primary" (click)="onEdit(element)" aria-label="Example icon-button with a dehaze icon">
                   <mat-icon>dehaze</mat-icon>
                 </button>
               </td>

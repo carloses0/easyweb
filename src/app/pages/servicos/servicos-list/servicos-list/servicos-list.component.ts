@@ -31,8 +31,19 @@ export class ServicosListComponent implements OnInit, AfterViewInit {
 
     getServicos() {
       this.servicos.getServicos().subscribe( res => {
-        this.dataSource.data = res;
+        let listFiltro = res;
+        listFiltro.forEach( data => {
+          res.forEach( prod => {
+            let index = listFiltro.findIndex(item => item.nome === prod.nome);
+      
+            if(data.nome == prod.nome && data.id != prod.id) {
+              listFiltro.splice(index,1)                            
+            }
+          })
+        });
+        this.dataSource.data = listFiltro;
       });
+      
     }
 
     onEdit(id: any) {

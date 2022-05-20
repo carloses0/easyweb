@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 
@@ -40,7 +41,8 @@ const materialComponentes = [
   MatSelectModule,
   MatPaginatorModule,
   MatListModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  HighchartsChartModule
 ];
 
 @NgModule({

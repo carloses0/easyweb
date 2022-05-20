@@ -1,0 +1,72 @@
+<div class="container-fluid justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <form [formGroup]="formulario">
+          <div class="container-fluid">
+            <div class="row">
+              <mat-card class="container-fluid">
+                <mat-card-header style="color: white; background-color: #3f51b5; width: 157px; border-radius: 15px 50px 30px;">
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title style="display: flex; justify-content: space-between;">
+                    <span style="padding-right: 10%;">EasyCar</span><mat-icon>build</mat-icon>
+                  </mat-card-title>
+                </mat-card-header>
+                <div class="row" style="margin-left: 5%">
+                  <div class="col-6">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Login</mat-label>
+                      <input matInput formControlName="login" required>
+                      <mat-error
+                        *ngIf="formulario.controls['login'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                      </mat-error>
+                      <button mat-button *ngIf="formulario.controls['login'].value" matSuffix mat-icon-button
+                              aria-label="Clear" (click)="formulario.controls['login'].reset()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-left: 5%">
+                    <div class="col-6">
+                      <mat-form-field appearance="legacy">
+                        <mat-label>Senha</mat-label>
+                        <input matInput formControlName="senha" required [type]="hide ? 'password' : 'text'">
+                        <mat-error
+                          *ngIf="formulario.controls['senha'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                        </mat-error>
+                        <button mat-button *ngIf="formulario.controls['senha'].value" matSuffix mat-icon-button
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+                                aria-label="Clear" (click)="hide = !hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="col-1">
+
+                    <div class="float-right three-button">
+                      <button type="button" mat-raised-button (click)="login()" color="primary">
+                        <mat-icon style="margin-right: -4px;">check_circle_outline</mat-icon>
+                        Entrar
+                      </button>
+                    </div>
+
+                  </div>
+                  <div class="float-right three-button">
+                    <button type="button" class="button-refresh" (click)="suporte()" mat-raised-button>
+                      <mat-icon style="margin-right: -4px;">contact_support</mat-icon>
+                      Esqueci minha senha.
+                    </button>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+  

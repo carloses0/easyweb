@@ -27,7 +27,22 @@ import { MatListModule } from '@angular/material/list';
 import { ServicosListComponent } from './pages/servicos/servicos-list/servicos-list/servicos-list.component';
 import { ProdutosListComponent } from './pages/produtos/produtos-list/produtos-list/produtos-list.component';
 import { OsFormComponent } from './pages/ordem-servico/os-form/os-form.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { TecnicosComponent } from './pages/tecnicos/tecnicos.component';
+import { OrcamentoFormComponent } from './pages/orcamento/orcamento-form/orcamento-form.component';
+import { OrcamentoComponent } from './pages/orcamento/orcamento.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { DatePipe } from '@angular/common';
+import { AreaComponent } from './pages/area/area.component';
+import { LoginComponent } from './pages/login/login.component';
 
+
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    validation: false,
+  };
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +58,11 @@ import { OsFormComponent } from './pages/ordem-servico/os-form/os-form.component
     ServicosListComponent,
     ProdutosListComponent,
     OsFormComponent,
+    TecnicosComponent,
+    OrcamentoFormComponent,
+    OrcamentoComponent,
+    AreaComponent,
+    LoginComponent
 
   ],
   imports: [
@@ -59,10 +79,13 @@ import { OsFormComponent } from './pages/ordem-servico/os-form/os-form.component
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatBadgeModule,
+    NgxMaskModule.forRoot(maskConfigFunction),
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

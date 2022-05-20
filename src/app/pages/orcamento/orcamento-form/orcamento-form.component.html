@@ -1,0 +1,143 @@
+<div class="container-fluid justify-content-center">
+  <div class="row">
+    <div class="col-12">
+      <mat-toolbar class="toolbar-custom">Orçamento</mat-toolbar>
+      <br>
+      <mat-divider></mat-divider>
+      <form [formGroup]="formulario">
+        <div class="container-fluid">
+          <div class="row">
+            <mat-card class="container-fluid">
+              <div class="row" style="margin-left: 5%">
+
+                <div class="col-2 float-lg-right" formGroupName="cliente">
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Cliente</mat-label>
+                    <input type="text" [disabled]="visualizar" matInput formControlName="nome" [formControl]="cliente" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+                      <mat-option *ngFor="let cliente of clienteGroup | async" [value]="cliente.nome">
+                        {{cliente.nome}}
+                      </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="formulario.controls['cliente'].hasError('required')"> {{ 'Campo obrigatório.'}}
+                    </mat-error>
+                    <button mat-button [disabled]="visualizar" *ngIf="cliente.value" matSuffix mat-icon-button aria-label="Clear" (click)="this.cliente.setValue(''); this.isVeiculo = false;
+                              this.disabledVeiculo = true;">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row" style="margin-left: 5%">
+                <div class="col-4 float-lg-left">
+                  <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Problemas</mat-label>
+                    <textarea [disabled]="visualizar" matInput formControlName="problemas" rows="5" cols="100" required></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row" style="margin-left: 5%">
+                <div class="col-4 float-lg-left">
+                  <mat-list #shoes>
+                    <h3><strong>Produtos</strong></h3>
+                    <mat-list-item *ngFor="let shoe of produtos.data">
+                      <h4 mat-line>{{shoe.nome}}</h4>
+                      
+                      <mat-icon *ngIf="!visualizar" style="cursor: pointer !important;" (click)="addFromList(shoe)">add</mat-icon>
+                      <mat-icon *ngIf="!visualizar" style="cursor: pointer !important;" (click)="removeFromList(shoe)">clear</mat-icon>
+                    </mat-list-item>
+              
+                  </mat-list>
+                </div>
+
+                <div class="col-4 float-lg-left">
+                  <mat-list #serv>
+                    <h3><strong>Serviços</strong></h3>
+                    <mat-list-item *ngFor="let serv of servicos.data">
+                      <h4 mat-line>{{serv.nome}}</h4>
+                      
+                      <div *ngIf="!visualizar" style="cursor: pointer !important;"><mat-icon (click)="addFromListServ(serv)">add</mat-icon></div>
+                      <div *ngIf="!visualizar" style="cursor: pointer !important;"><mat-icon (click)="removeFromListServ(serv)">clear</mat-icon></div>
+                    </mat-list-item>
+              
+                  </mat-list>
+                </div>
+              </div>
+
+              <mat-divider></mat-divider>
+
+              <div class="row" style="margin-left: 5%">
+                <div class="col-6 float-lg-left">
+                  <mat-list>
+                    <mat-list-item *ngFor="let item of dataSourceCarrinho.data">
+                      <span [matBadge]="item.qtd" matBadgeOverlap="false"><h6 mat-line>{{item.nome}}</h6></span>
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+                <div class="col-6 float-lg-right">
+                  <mat-list>
+                    <mat-list-item *ngFor="let item of dataSourceCarrinhoServicos.data">
+                      <span matBadgeOverlap="false"><h6 mat-line>{{item.nome}}</h6></span>
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+              </div>
+              
+
+              <div *ngIf="!visualizar" class="row" style="margin-left: 5%">
+                <div class="col-6 float-lg-left">
+                  <h6>
+                    Valor Produtos R$: {{valorProdutos}}
+                  </h6>
+                </div>
+                <div class="col-6 float-lg-left">
+                  <h6>
+                    Valor Serviços R$: {{valorServicos}}
+                  </h6>
+                </div>
+              </div>
+
+              <div class="row" style="margin-left: 5%; margin-top: 5%;">
+                <div class="col-xs-6 col-sm-8 col-md-12 col-lg-12 container">
+                  <h6>
+                    Valor Total R$: {{ visualizar ? valorTotal : valorProdutos + valorServicos}}
+                  </h6>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-6 col-sm-8 col-md-12 col-lg-12 container">
+
+                  <div class="float-right three-button">
+                    <button type="button" class="button-refresh" [routerLink]="['/orcamento']" mat-raised-button>
+                      <mat-icon>keyboard_backspace</mat-icon>
+                      Voltar
+                    </button>
+                  </div>
+
+                  <div *ngIf="!visualizar" class="float-right three-button">
+                    <button type="button" class="button-refresh" mat-raised-button (click)="clearAll()">
+                      <mat-icon>autorenew</mat-icon>
+                      Limpar
+                    </button>
+                  </div>
+
+                  <div *ngIf="!visualizar" class="float-right three-button">
+                    <button type="button" mat-raised-button (click)="salvar()" color="primary">
+                      <mat-icon>check_circle_outline</mat-icon>
+                      Salvar
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

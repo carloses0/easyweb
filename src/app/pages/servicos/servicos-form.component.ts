@@ -124,12 +124,12 @@ export class ServicosComponent implements OnInit {
   }
 
   build() {
-
+    var valor = this.formulario.controls['valor'].value * this.formulario.controls['duracao'].value;
     this.servico = new ServicoModel(this.id ? +this.id : null,
       this.formulario.controls['nome'].value,
       this.formulario.controls['tipo'].value,
       this.formulario.controls['descricao'].value,
-      this.formulario.controls['valor'].value,
+      valor,
       this.formulario.controls['duracao'].value);
 
     return this.servico;

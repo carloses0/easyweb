@@ -1,6 +1,7 @@
 import { environment } from './../environments/environment';
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,11 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class AppComponent {
   title = 'Sistema de gerenciamento';
   ambiente: string;
+  habilitado = true;
 
-  constructor() {
+  constructor(public loginService: LoginService) {
     this.ambiente = environment.ambiente;
+    this.habilitado = loginService.habilitado;
   }
 
   flag = false;
